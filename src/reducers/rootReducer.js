@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
-import battleFieldReducer from './battlefieldReducer';
+import characterReducer from './characterReducer';
+import mapReducer from './mapReducer';
 
 const rootReducer = combineReducers({
-  battlefield: battleFieldReducer
+  characterData: characterReducer,
+  mapData: mapReducer
 });
 
 export default rootReducer;

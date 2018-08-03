@@ -1,5 +1,5 @@
 export function getRequest(url) {
-  return fetch('some-url').then(response => {
+  return fetch(url).then(response => {
     if (response.ok) {
       return response.json();
     } else {

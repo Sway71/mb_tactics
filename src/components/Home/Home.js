@@ -17,7 +17,7 @@ export const Home = () => {
           <Link to='/login'>
             Login
           </Link>
-          <Link to='/map-selection'>
+          <Link to='/battle-selection'>
             Battle!!
           </Link>
           <Link to='/three-test'>

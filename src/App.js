@@ -5,7 +5,7 @@ import { Route, Switch } from 'react-router-dom';
 
 import HomeContainer from './containers/HomeContainer';
 import LoginContainer from './containers/LoginContainer';
-import MapSelectionContainer from './containers/MapSelectionContainer';
+import BattleSelectionContainer from './containers/BattleSelectionContainer';
 import ThreeTestContainer from './containers/ThreeTestContainer';
 
 class App extends Component {
@@ -15,7 +15,7 @@ class App extends Component {
         <Switch>
           <Route exact path="/" component={HomeContainer} />
           <Route exact path="/login" component={LoginContainer} />
-          <Route exact path="/map-selection" component={MapSelectionContainer} />
+          <Route exact path="/battle-selection" component={BattleSelectionContainer} />
           <Route exact path="/three-test" component={ThreeTestContainer} />
         </Switch>
       </div>
