@@ -15,19 +15,25 @@ class ThreeTestContainer extends React.Component {
       cubePosition: new THREE.Vector3(2, 0, 2),
       allies: [
         {
-          'id': 1,
-          'x': 2,
-          'y': 1
+          id: 1,
+          x: 2,
+          moveToX: 4,
+          y: 1,
+          moveToY: 1
         },
         {
-          'id': 2,
-          'x': 3,
-          'y': 2
+          id: 2,
+          x: 3,
+          moveToX: 3,
+          y: 2,
+          moveToY: 2
         },
         {
           'id': 1,
           'x': 1,
-          'y': 2
+          moveToX: 1,
+          'y': 2,
+          moveToY: 2
         }
       ]
     };
@@ -36,16 +42,22 @@ class ThreeTestContainer extends React.Component {
     this._onAnimate = () => {
       // we will get this callback every frame
 
-      // pretend cubeRotation is immutable.
-      // this helps with updates and pure rendering.
-      // React will be sure that the rotation has now updated.
-      // this.setState({
-      //   cubeRotation: new THREE.Euler(
-      //     this.state.cubeRotation.x + 0.02,
-      //     this.state.cubeRotation.y + 0.02,
-      //     0
-      //   )
-      // });
+      // TODO: make this movement below iterative over a path
+      this.setState({
+        allies: this.state.allies.map((ally) => {
+          if (ally.x === ally.moveToX && ally.y === ally.moveToY) {
+            return ally;
+          }
+          return {
+            ...ally,
+            x: ally.moveToX > ally.x ? (
+              ((ally.x * 10) + 1) / 10
+            ) : (
+              ((ally.x * 10) - 1) / 10
+            )
+          };
+        })
+      });
     };
   }
 
@@ -57,6 +69,9 @@ class ThreeTestContainer extends React.Component {
       mainCamera="camera" // this points to the perspectiveCamera which has the name set to "camera" below
       width={width}
       height={height}
+
+      alpha={true}
+      clearAlpha={0}
 
       onAnimate={this._onAnimate}
     >

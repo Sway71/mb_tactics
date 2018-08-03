@@ -1,4 +1,17 @@
+html,body {
+  background: #8bc5cd;
+  font-family: 'Montserrat', sans-serif;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body > div {
+  height: 100%;
+}
+
 .app {
+  height: 100%;
   text-align: center;
 }
 
