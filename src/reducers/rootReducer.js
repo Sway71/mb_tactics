@@ -1,10 +1,15 @@
 import { combineReducers } from 'redux';
-import characterReducer from './characterReducer';
+
 import mapReducer from './mapReducer';
+import characterReducer from './characterReducer';
+import enemyReducer from './enemyReducer';
+import battleConfigReducer from './battleConfigReducer';
 
 const rootReducer = combineReducers({
+  mapData: mapReducer,
   characterData: characterReducer,
-  mapData: mapReducer
+  enemyData: enemyReducer,
+  battleConfig: battleConfigReducer
 });
 
 export default rootReducer;

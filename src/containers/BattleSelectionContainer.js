@@ -4,23 +4,42 @@ import {connect } from 'react-redux';
 
 import { BattleSelection } from '../components/BattleSelection/BattleSelection';
 
-import { getCharacters } from '../actions/characterDataActions';
 import { getMaps } from '../actions/mapDataActions';
+import { getCharacters } from '../actions/characterDataActions';
+import { getEnemies } from '../actions/enemyDataActions';
+import {
+  selectMap,
+  selectCharacter,
+  selectEnemy,
+  createBattle
+} from '../actions/battleConfigActions';
 
 class BattleSelectionContainer extends React.Component {
   componentWillMount() {
-    this.props.getCharacters();
     this.props.getMaps();
+    this.props.getCharacters();
+    this.props.getEnemies();
   }
 
   render() {
-    const { characterData, mapData } = this.props;
+    const {
+      battleConfig,
+      mapData,
+      characterData,
+      enemyData
+    } = this.props;
 
     return (
       <div>
         <BattleSelection
-          charactersList={characterData.charactersList}
+          battleConfig={battleConfig}
           mapsList={mapData.mapsList}
+          charactersList={characterData.charactersList}
+          enemiesList={enemyData.enemiesList}
+          selectMap={this.props.selectMap}
+          selectCharacter={this.props.selectCharacter}
+          selectEnemy={this.props.selectEnemy}
+          createBattle={this.props.createBattle}
         />
       </div>
     );
@@ -29,15 +48,22 @@ class BattleSelectionContainer extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
+    battleConfig: state.battleConfig,
+    mapData: state.mapData,
     characterData: state.characterData,
-    mapData: state.mapData
+    enemyData: state.enemyData
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
+    getMaps,
     getCharacters,
-    getMaps
+    getEnemies,
+    selectMap,
+    selectCharacter,
+    selectEnemy,
+    createBattle
   },
   dispatch
 );

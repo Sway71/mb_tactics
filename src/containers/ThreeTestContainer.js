@@ -48,6 +48,7 @@ class ThreeTestContainer extends React.Component {
           if (ally.x === ally.moveToX && ally.y === ally.moveToY) {
             return ally;
           }
+          console.log(ally.x);
           return {
             ...ally,
             x: ally.moveToX > ally.x ? (
@@ -93,7 +94,11 @@ class ThreeTestContainer extends React.Component {
               key={`${index}-ally`}
               position={new THREE.Vector3(ally.y, 0.5, ally.x)}
             >
-              <sphereGeometry radius={.25} />
+              <sphereGeometry
+                heightSegments={12}
+                radius={.25}
+                widthSegments={16}
+              />
               <meshNormalMaterial />
             </mesh>
           );

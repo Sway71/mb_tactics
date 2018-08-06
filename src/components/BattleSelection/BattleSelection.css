@@ -6,15 +6,36 @@
 
 .selectionList > div {
   background: white;
+  border: 2px solid white;
   cursor: pointer;
   font-size: 1.2rem;
   margin-bottom: .5rem;
   padding: 1.5rem 0;
+  position: relative;
   width: 300px;
 
-  transition: all .3s ease-in;
+  transition: all .2s ease-in;
 }
 
-.selectionList > div:hover {
+.characterIndex {
+  background: white;
+  border: 4px solid black;
+  border-radius: 50%;
+  font-weight: bold;
+  height: 28px;
+  line-height: 1.5;
+  position: absolute;
+  right: -18px;
+  top: 20px;
+  width: 28px;
+}
+
+.selectionList > .boxItem:hover {
   background: #ddd;
+  border: 2px solid #ddd;
+}
+
+.selectionList > .selected {
+  background: #ffe69c;
+  border: 2px solid #bd6a00;
 }
