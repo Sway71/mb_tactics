@@ -44,17 +44,22 @@ export function receiveCreateBattle(response) {
   };
 }
 
-export function createBattle() {
+export function createBattle(history) {
   return (dispatch, getState) => {
-    const { battleConfig: {
+    const {
       mapId,
       characterIds,
       enemyIds
-    } } = getState();
-    dispatch(requestCreateBattle(mapId, characterIds, enemyIds));
+    } = getState().battleConfig;
+    dispatch(requestCreateBattle());
 
-    postCreateBattle().then((response) => {
+    postCreateBattle(
+      mapId,
+      characterIds,
+      enemyIds
+    ).then((response) => {
       dispatch(receiveCreateBattle(response));
+      history.push(`/battle/${response.battleId}`);
     });
   };
 }

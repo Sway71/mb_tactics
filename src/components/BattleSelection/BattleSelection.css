@@ -39,3 +39,21 @@
   background: #ffe69c;
   border: 2px solid #bd6a00;
 }
+
+.createBattleButton {
+  background: #ff6262;
+  border: none;
+  border-radius: 0;
+  color: white;
+  cursor: pointer;
+  font-size: 25px;
+  height: 80px;
+  margin: 24px 0 80px 0;
+  width: 250px;
+
+  transition: all .2s ease-in;
+}
+
+.createBattleButton:hover {
+  background: #ff7d7d;
+}

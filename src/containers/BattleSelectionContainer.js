@@ -1,6 +1,7 @@
 import React from 'react';
 import { bindActionCreators } from 'redux';
 import {connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 import { BattleSelection } from '../components/BattleSelection/BattleSelection';
 
@@ -23,6 +24,7 @@ class BattleSelectionContainer extends React.Component {
 
   render() {
     const {
+      history,
       battleConfig,
       mapData,
       characterData,
@@ -32,6 +34,7 @@ class BattleSelectionContainer extends React.Component {
     return (
       <div>
         <BattleSelection
+          history={history}
           battleConfig={battleConfig}
           mapsList={mapData.mapsList}
           charactersList={characterData.charactersList}
@@ -69,7 +72,7 @@ const mapDispatchToProps = (dispatch) => {
 );
 };
 
-export default connect(
+export default withRouter(connect(
   mapStateToProps,
   mapDispatchToProps
-)(BattleSelectionContainer);
+)(BattleSelectionContainer));

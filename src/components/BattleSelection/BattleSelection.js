@@ -3,6 +3,7 @@ import styles from './BattleSelection.css';
 import React from 'react';
 
 export const BattleSelection = ({
+  history,
   battleConfig,
   mapsList,
   charactersList,
@@ -44,7 +45,7 @@ export const BattleSelection = ({
                 {character.name}
 
                 {characterIds.includes(character.id) ? <div className={styles.characterIndex}>
-                  {characterIds.indexOf(character.id) + 1}
+                  #{characterIds.indexOf(character.id) + 1}
                 </div> : null}
               </div>
             );
@@ -65,16 +66,17 @@ export const BattleSelection = ({
                 {enemy.name}
 
                 {enemyIds.includes(enemy.id) ? <div className={styles.characterIndex}>
-                  {enemyIds.filter((id) => id === enemy.id).length}
+                  x{enemyIds.filter((id) => id === enemy.id).length}
                 </div> : null}
               </div>
             );
           })}
         </div>
       </div>
-      <button onClick={createBattle}>
-        Create Battle
-      </button>
+      <button
+        className={styles.createBattleButton}
+        onClick={() => {createBattle(history);}}
+      >Create Battle</button>
     </div>
   );
 };
